@@ -21,7 +21,7 @@ const AuthorCard = (props) => {
           </h5>
           <small className="card-text">{author.books.length} books</small>
           <button
-            onClick={props.deleteAuthorHandler(author.id)}
+            onClick={() => props.deleteAuthorHandler(author.id)}
             className="btn btn-danger btn-block"
           >
             DELETE
