@@ -26,14 +26,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         authors: authors.concat(newAuthor),
+        newAuthorId: state.newAuthorId,
       };
     case "DELETE_AUTHOR":
-      const newAuthors = authors.filter(
-        (author) => author.id != author.payload
-      );
       return {
         ...state,
-        authors: newAuthors,
+        authors: state.authors.filter((author) => author.id != author.payload),
       };
     default:
       return state;
