@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   return (
     <div id="sidebar">
       <img src="theindex.svg" className="logo" alt="the index logo" />
@@ -19,5 +20,10 @@ const Sidebar = props => {
     </div>
   );
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addAuthorHandler: () => dispatch({ type: "ADD_AUTHOR" }),
+  };
+};
 
-export default Sidebar;
+export default connect(null, mapDispatchToProps)(Sidebar);

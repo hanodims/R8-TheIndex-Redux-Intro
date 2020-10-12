@@ -1,10 +1,40 @@
+import authors from "../data";
+// Data
+import data from "../data";
+
 const initialState = {
-  authors: "COMPLETE ME",
-  newAuthorId: "DO YOU NEED ME??"
+  authors: data,
+  newAuthorId: 5,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "ADD_AUTHOR":
+      const newAuthor = {
+        id: state.newAuthorId + 1,
+        first_name: "Author",
+        last_name: "McAuthorFace",
+        imageUrl:
+          "https://www.netz.de/images/2016-11-21-firefox-focus-header-58cfedd908c25_500_300.jpg",
+        books: [
+          {
+            title: "Anonymous book",
+            color: "mysterious color",
+          },
+        ],
+      };
+      return {
+        ...state,
+        authors: authors.concat(newAuthor),
+      };
+    case "DELETE_AUTHOR":
+      const newAuthors = authors.filter(
+        (author) => author.id != author.payload
+      );
+      return {
+        ...state,
+        authors: newAuthors,
+      };
     default:
       return state;
   }
